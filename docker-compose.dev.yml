@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=iDADK8jlqDc0yi9U3v19z
+      - POSTGRES_USER=stock_sql_user
+      - POSTGRES_DB=stock_db
+    networks:
+      - spring-postgres
+
+  spring-app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/stock_db
+      - SPRING_DATASOURCE_USERNAME=stock_sql_user
+      - SPRING_DATASOURCE_PASSWORD=iDADK8jlqDc0yi9U3v19z
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    volumes:
+      - ./:/app
+      - ~/.m2:/root/.m2
+    networks:
+      - spring-postgres
+
+networks:
+  spring-postgres:
