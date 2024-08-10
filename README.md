@@ -73,6 +73,11 @@ To stop the development environment, use:
 ```yaml
 docker-compose -f docker-compose.dev.yml down
 ```
+Alternatively, after building the project, you can use:
+```yaml
+docker-compose up postgres spring-app-dev
+```
+
 
 ## Manually Starting the Development Environment
 To manually start the development environment:
@@ -139,6 +144,10 @@ To stop the production environment, use:
 ```yaml
 docker-compose -f docker-compose.prod.yml down
 ```
+Alternatively, after building the project, you can use:
+```yaml
+docker-compose up postgres spring-app-prod
+```
 ## Manually Starting the Production Environment
 To manually start the production environment:
 
@@ -156,6 +165,12 @@ Replace your-application-name.jar with the actual name of your built JAR file.
 
 ```yaml
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
+```
+## Running Both Environments Together
+To run both development and production environments simultaneously:
+
+```yaml
+docker-compose up --build
 ```
 
 ## Dockerfile
