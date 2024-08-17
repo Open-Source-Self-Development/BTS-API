@@ -1,4 +1,4 @@
-package com.opensourceselfdevelopment.bts_api;
+package opensourceselfdevelopment.btsApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

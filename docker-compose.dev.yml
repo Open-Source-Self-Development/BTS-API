@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres:16-alpine
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/stock_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5433/stock_db
       - SPRING_DATASOURCE_USERNAME=stock_sql_user
       - SPRING_DATASOURCE_PASSWORD=iDADK8jlqDc0yi9U3v19z
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
